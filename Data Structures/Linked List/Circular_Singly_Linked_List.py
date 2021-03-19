@@ -139,3 +139,9 @@ class CircularSinglyLinkedList:
                     else:
                         current = current.next
             return False 
+    
+    def clear(self):
+        self.head = None
+        self.tail.next = None
+        self.tail = None 
+        self.size = 0
