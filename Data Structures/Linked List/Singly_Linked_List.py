@@ -78,6 +78,7 @@ class SinglyLinkedList:
     def clear(self):
         self.head = None
         self.tail = None
+        self.size = 0
     
     def traverse(self):
         current = self.head
