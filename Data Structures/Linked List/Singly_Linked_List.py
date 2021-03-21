@@ -83,6 +83,7 @@ class SinglyLinkedList:
             else:
                 current = current.next
                 index += 1
+            return -1
     
     def clear(self):
         self.head = None
