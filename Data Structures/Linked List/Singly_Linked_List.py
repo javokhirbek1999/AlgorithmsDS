@@ -66,14 +66,23 @@ class SinglyLinkedList:
                 current.next = next_node.next 
                 
     
-    def search(self, value):
+    def contains(self, value):
         current = self.head
         while current:
             if current.value == value:
                 return True
+            current = current.next
+        return False  
+
+    def search(self, value):
+        current = self.head
+        index = 0
+        while current:
+            if current.value == value:
+                return index
             else:
                 current = current.next
-        return False
+                index += 1
     
     def clear(self):
         self.head = None
