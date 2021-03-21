@@ -127,7 +127,7 @@ class CircularSinglyLinkedList:
                     print(current.value)
                     current = current.next
     
-    def search(self, value):
+    def contains(self, value):
         if self.head is None:
             return None
         else:
@@ -141,9 +141,29 @@ class CircularSinglyLinkedList:
                     else:
                         current = current.next 
             return False
+        
+    def search(self, value):
+        if self.head is None:
+            return None
+        else:
+            current = self.head
+            index = 0
+            while current:
+                if current.next == self.head:
+                    break
+                else:
+                    if current.value == value:
+                        return index
+                    else:
+                        current = current.next 
+                        index += 1
+            return -1    
     
     def clear(self):
-        self.head = None
-        self.tail.next = None
-        self.tail = None
-        self.size = 0
+        if self.head is None:
+            return None
+        else:
+            self.head = None
+            self.tail.next = None
+            self.tail = None
+            self.size = 0
