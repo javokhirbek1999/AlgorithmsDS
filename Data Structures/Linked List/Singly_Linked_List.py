@@ -37,18 +37,21 @@ class SinglyLinkedList:
             self.head = node
 
     def remove(self, value):
-        current = self.head
-        prev = self.head
-        while current:
-            if current.value == value:
-                if current == self.head:
-                    self.head = current.next
-                else:
-                    prev.next = current.next
-                self.size -= 1
-                return 
-            prev = current
-            current = current.next
+        if self.head is None:
+            return None
+        else:
+            current = self.head
+            prev = self.head
+            while current:
+                if current.value == value:
+                    if current == self.head:
+                        self.head = current.next
+                    else:
+                        prev.next = current.next
+                    self.size -= 1
+                    return 
+                prev = current
+                current = current.next
     
     def remove_by_index(self, index):
         if self.head is None:
@@ -67,31 +70,43 @@ class SinglyLinkedList:
                 
     
     def contains(self, value):
-        current = self.head
-        while current:
-            if current.value == value:
-                return True
-            current = current.next
-        return False  
+        if self.head is None:
+            return None
+        else:
+            current = self.head
+            while current:
+                if current.value == value:
+                    return True
+                current = current.next
+            return False  
 
     def search(self, value):
-        current = self.head
-        index = 0
-        while current:
-            if current.value == value:
-                return index
-            else:
-                current = current.next
-                index += 1
-            return -1
+        if self.head is None:
+            return None
+        else:
+            current = self.head
+            index = 0
+            while current:
+                if current.value == value:
+                    return index
+                else:
+                    current = current.next
+                    index += 1
+                return -1
     
     def clear(self):
-        self.head = None
-        self.tail = None
-        self.size = 0
+        if self.head is None:
+            return None
+        else:
+            self.head = None
+            self.tail = None
+            self.size = 0
     
     def traverse(self):
-        current = self.head
-        while current:
-            print(current.value)
-            current = current.next
+        if self.head is None:
+            return None
+        else:
+            current = self.head
+            while current:
+                print(current.value)
+                current = current.next
