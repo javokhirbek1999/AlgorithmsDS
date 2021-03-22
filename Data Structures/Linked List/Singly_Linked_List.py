@@ -55,7 +55,7 @@ class SinglyLinkedList:
     
     def remove_by_index(self, index):
         if self.head is None:
-            return None
+            raise Exception('List does not exist')
         else:
             if index == 0:
                 self.head = self.head.next
@@ -71,7 +71,7 @@ class SinglyLinkedList:
     
     def contains(self, value):
         if self.head is None:
-            return None
+            raise Exception('List does not exist')
         else:
             current = self.head
             while current:
@@ -82,7 +82,7 @@ class SinglyLinkedList:
 
     def search(self, value):
         if self.head is None:
-            return None
+            raise Exception('List does not exist')
         else:
             current = self.head
             index = 0
@@ -95,8 +95,8 @@ class SinglyLinkedList:
                 return -1
     
     def clear(self):
-        if self.head is None:
-            return None
+        if self.head is None:            
+            raise Exception('List does not exist')
         else:
             self.head = None
             self.tail = None
@@ -104,7 +104,7 @@ class SinglyLinkedList:
     
     def traverse(self):
         if self.head is None:
-            return None
+            raise Exception('List does not exist')
         else:
             current = self.head
             while current:
