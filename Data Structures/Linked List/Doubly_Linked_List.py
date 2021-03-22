@@ -49,7 +49,7 @@ class DoublyLinkedList:
             if index == 0:
                 self.prepend(value)
             else:
-                return Exception('Invalid Index for an empty List')
+                raise Exception('Invalid Index for an empty List')
         else:
             if index == 0:
                 self.prepend(value)
@@ -68,7 +68,7 @@ class DoublyLinkedList:
 
     def remove(self, value):
         if self.head is None:
-            return Exception('List Does not exist')
+            raise Exception('List Does not exist')
         else:
             current = self.head
             while current:
@@ -88,7 +88,7 @@ class DoublyLinkedList:
 
     def remove_by_index(self, index):
         if self.head is None:
-            return Exception('List does not exist')
+            raise Exception('List does not exist')
         else:
             if index == 0:
                 self.head = self.head.next
@@ -110,7 +110,7 @@ class DoublyLinkedList:
     
     def traverse(self):
         if self.head is None:
-            return Exception('List does not exist')
+            raise Exception('List does not exist')
         else:
             current = self.head
             while current:
@@ -119,7 +119,7 @@ class DoublyLinkedList:
     
     def contains(self, value):
         if self.head is None:
-            return Exception('List does not exist')
+            raise Exception('List does not exist')
         else:
             current = self.head
             while current:
@@ -130,7 +130,7 @@ class DoublyLinkedList:
 
     def search(self, value):
         if self.head is None:
-            return Exception('Lis does not exist')
+            raise Exception('Lis does not exist')
         else:
             current = self.head
             index = 0
@@ -144,7 +144,7 @@ class DoublyLinkedList:
 
     def clear(self):
         if self.head is None:
-            return Exception('List does not exist')
+            raise Exception('List does not exist')
         else:
             current = self.head
             while current:
