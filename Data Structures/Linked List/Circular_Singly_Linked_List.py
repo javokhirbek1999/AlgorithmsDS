@@ -66,7 +66,7 @@ class CircularSinglyLinkedList:
     
     def remove(self, value):
         if self.head is None:
-            return None
+            raise Exception('List does not exist')
         else:
             current = self.head
             prev = self.head
@@ -85,7 +85,7 @@ class CircularSinglyLinkedList:
     
     def remove_by_index(self, index):
         if self.head is None:
-            return None
+            raise Exception('List does not exist')
         else:
             if index == 0:
                 if self.head == self.tail:
@@ -117,7 +117,7 @@ class CircularSinglyLinkedList:
     
     def traverse(self):
         if self.head is None:
-            return None
+            raise Exception('List does not exist')
         else:
             current = self.head
             while current:
@@ -129,7 +129,7 @@ class CircularSinglyLinkedList:
     
     def contains(self, value):
         if self.head is None:
-            return None
+            raise Exception('List does not exist')
         else:
             current = self.head
             while current:
@@ -144,7 +144,7 @@ class CircularSinglyLinkedList:
         
     def search(self, value):
         if self.head is None:
-            return None
+            raise Exception('List does not exist')
         else:
             current = self.head
             index = 0
@@ -161,7 +161,7 @@ class CircularSinglyLinkedList:
     
     def clear(self):
         if self.head is None:
-            return None
+            raise Exception('List does not exist')
         else:
             self.head = None
             self.tail.next = None
