@@ -1,3 +1,4 @@
+# O(log(n))
 def binary_search(arr,item):
     low = arr[0]
     high = arr[-1]
