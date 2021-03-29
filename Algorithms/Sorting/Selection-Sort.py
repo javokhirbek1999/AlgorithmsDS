@@ -19,3 +19,9 @@ def selection_sort(arr):
 # Selection sort costs O(n^2) as it has two nested loops: 
 # 1. First loop for finding the smallest number in the array
 # 2. For looping through the array to append the elements in order from smallest to greatest
+
+# Algorithm:
+# 1. Create a new array to store the sorted elements 
+# 2. Find the smallest value in the array: Helper function for this case would be helpful  
+# 3. Add that smallest value to the new array and remove it from the array immediately: pop() is the best option for this case
+# 4. Keep repeating step 2 and 3 until the original array is empty
