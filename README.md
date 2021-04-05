@@ -5,6 +5,7 @@ This repo contains all of  implementation of Data Structures and Algorithms in P
 <ul>
   <a href="https://github.com/javokhirbek1999/AlgorithmsDS/tree/main/Data%20Structures/Linked%20List"><li>Linked List</li></a>
   <a href="https://github.com/javokhirbek1999/AlgorithmsDS/tree/main/Data%20Structures/Stack"><li>Stack</li></a>  
+  <a href="https://github.com/javokhirbek1999/AlgorithmsDS/tree/main/Data%20Structures/Trees/BinaryTrees"><li>Binary Tree</li></a>
 </ul>
 <br/>
 <h3>Algorithms</h3>
