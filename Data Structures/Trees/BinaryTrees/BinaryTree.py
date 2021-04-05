@@ -1,4 +1,3 @@
-from collections import deque
 class TreeNode:
     def __init__(self,value):
         self.value = value
@@ -128,4 +127,118 @@ class TreeNode:
                 node.left,node.right = node.right,node.left
                 queue.append(node.left)
                 queue.append(node.right)
-        return root                   
+        return root      
+
+    def search(self,root,value):
+        if not root:
+            return False
+        queue = []
+        queue.append(root)
+        while queue:
+            node = queue.pop(0)
+            if node:
+                if node.value == value:
+                    return True
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        return False 
+
+    def insert(self,root,newNode):
+        if not root:
+            root = newNode
+        else:
+            queue = []
+            queue.append(root)
+            while queue:
+                node = queue.pop(0)
+                if node.left:
+                    queue.append(node.left)
+                else:
+                    node.left = newNode
+                    return 
+                if node.right:
+                    queue.append(node.right)
+                else:
+                    node.right = newNode     
+                    return
+                                 
+
+    def findDepestNode(self,root):
+        if not root:
+            return None
+        else:
+            queue = []
+            queue.append(root)
+            while queue:
+                node = queue.pop(0)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            return node 
+
+        # 1. Find the node to delete  
+        # 2. Store that node in temp var  
+        # 3. Store the value of node in the var 
+        # 4. Remove the depest node when level order traversal is done   
+        # 5. Replace the value of the node to be deleted with the last node's value
+                       
+    def removeDepestBTnode(self,root,dNode):
+        if not root:
+            return None
+        else:
+            queue = []
+            queue.append(root)
+            while queue:
+                temp = queue.pop(0)
+
+                if temp:
+                    if temp is dNode:
+                        temp = None
+                        return
+
+                if temp.left:
+                    if temp.left is dNode:
+                        temp.left = None
+                        return
+                    else:
+                        queue.append(temp.left)
+
+                if temp.right:
+                    if temp.right is dNode:
+                        temp.right = None
+                        return
+                    else:
+                        queue.append(temp.right)
+
+    def removeNodeInBT(self,root,value):
+        if not root:
+            return None
+        if not root.left and not root.right:
+            if root.value == value:
+                return None
+        else:
+            key_node = None
+            q = []
+            q.append(root)
+            while q:
+                node = q.pop()
+                if node.value == value:
+                    key_node = node
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+        if key_node:
+            x = node.value # Store the vale of the last node
+            self.removeDepestBTnode(root,node)# remove the last node
+            key_node.value = x # replace the value of the node to be deleted with the last node's value
+        return root      
+
+    # Clear method
+    def clear(self,root):
+        root.value = None
+        root.left = None
+        root.right = None
