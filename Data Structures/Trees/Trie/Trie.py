@@ -34,4 +34,31 @@ class Trie:
         # Otherwise, it is the prefix, not the whole word
         else:
             return False
-    
+ 
+    def remove(self,root,word,index):
+        ch = word[index]
+        current = root.children.get(ch)
+        canBeRemoved = False
+
+        if len(current.children)>1:
+            self.remove(current,word,index+1)
+            return False
+        
+        if index == len(word)-1:
+            if len(current.children) >= 1:
+                current.endOfString = False
+                return False
+            else:
+                root.children.pop(ch)
+                return True 
+        
+        if current.endOfString == True:
+            self.remove(current,word,index)
+            return False
+        
+        canBeRemoved = self.remove(current,word,index+1)
+        if canBeRemoved == True:
+            root.children.pop(ch)
+            return True
+        else:
+            return False
