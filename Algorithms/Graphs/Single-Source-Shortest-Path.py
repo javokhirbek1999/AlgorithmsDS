@@ -5,10 +5,10 @@ class Graph:
         self.gdict = gdict
     
     def bfs(self,start,end):
-        queue = [start]
+        queue = [[start]]
         while queue:
             path = queue.pop(0)
-            node= path[-1]
+            node = path[-1]
             if node == end:
                 return path
             for adjacent in self.gdict.get(node,[]):
