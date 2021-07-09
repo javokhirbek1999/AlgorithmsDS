@@ -1,5 +1,6 @@
 def coinChange(totalAmount, coins):
 	n = totalAmount
+	coins.sort()
 	index = len(coins)-1
 	min_coin_set = []
 	while True:
