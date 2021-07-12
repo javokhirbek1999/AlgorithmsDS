@@ -20,7 +20,8 @@ This repo contains all of  implementation of Data Structures and Algorithms in P
 <ul>
   <a href="https://github.com/javokhirbek1999/AlgorithmsDS/tree/main/Algorithms/LinkedLists"><li>Linked Lists</li></a>
   <a href="https://github.com/javokhirbek1999/AlgorithmsDS/tree/main/Algorithms/BinarySearch"><li>Binary Search</li></a>
+  <a href="https://github.com/javokhirbek1999/AlgorithmsDS/tree/main/Algorithms/Sorting"><li>Sorting</li></a> 
   <a href="https://github.com/javokhirbek1999/AlgorithmsDS/tree/main/Algorithms/Graphs"><li>Graphs</li></a>
   <a href="https://github.com/javokhirbek1999/AlgorithmsDS/tree/main/Algorithms/Greedy"><li>Greedy</li></a>  
-  <a href="https://github.com/javokhirbek1999/AlgorithmsDS/tree/main/Algorithms/Sorting"><li>Sorting</li></a> 
+  <a href="https://github.com/javokhirbek1999/AlgorithmsDS/tree/main/Algorithms/Divide-And-Conquer"><li>Divide and Conquer</li></a> 
 </ul>
