@@ -24,4 +24,5 @@ This repo contains all of  implementation of Data Structures and Algorithms in P
   <a href="https://github.com/javokhirbek1999/AlgorithmsDS/tree/main/Algorithms/Graphs"><li>Graphs</li></a>
   <a href="https://github.com/javokhirbek1999/AlgorithmsDS/tree/main/Algorithms/Greedy"><li>Greedy</li></a>  
   <a href="https://github.com/javokhirbek1999/AlgorithmsDS/tree/main/Algorithms/Divide-And-Conquer"><li>Divide and Conquer</li></a> 
+  <a href="https://github.com/javokhirbek1999/AlgorithmsDS/tree/main/Algorithms/Dynamic-Programming"><li>Dynamic Programming (DP)</li></a> 
 </ul>
