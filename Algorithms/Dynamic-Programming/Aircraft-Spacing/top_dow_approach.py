@@ -1,5 +1,5 @@
 # Top-down approach 
-# Memoization
+# Using Memoization
 class AircraftSpacing:
 	def __init__(self, passengers):
 		self.passengers = passengers
