@@ -72,5 +72,4 @@ func (this *Queue[any]) Print() {
 	}
 
 	fmt.Println()
-
 }
