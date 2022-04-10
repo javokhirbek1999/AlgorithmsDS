@@ -1,17 +1,19 @@
-class Node{
-    public int value;
-    public Node next;
+package com.believer.LinkedList;
 
-    public Node(int value) {
+class Node <T> {
+    protected T value;
+    protected Node<T> next;
+
+    public Node(T value) {
         this.value = value;
-        this.next = null;
     }
 }
 
-public class SinglyLinkedList {
-    public Node head;
-    public Node tail;
-    public int size;
+public class SinglyLinkedList <T> {
+
+    private Node<T> head;
+    private Node<T> tail;
+    private int size;
 
     public SinglyLinkedList() {
         this.head = null;
@@ -20,7 +22,8 @@ public class SinglyLinkedList {
     }
 
     public void print() {
-        Node current = this.head;
+
+        Node<T> current = this.head;
 
         while (current != null) {
             if (current.next == null) {
@@ -32,9 +35,9 @@ public class SinglyLinkedList {
         }
     }
 
-    public void prepend(int value) {
+    public void prepend(T value) {
 
-        Node node = new Node(value);
+        Node<T> node = new Node<>(value);
 
         if (this.head == null) {
             this.head = node;
@@ -47,12 +50,12 @@ public class SinglyLinkedList {
         this.size++;
     }
 
-    public void append(int value) {
+    public void append(T value) {
 
-        Node node = new Node(value);
+        Node<T> node = new Node<>(value);
 
         if (this.head == null) {
-            this.head = node;
+            this.head= node;
             this.tail = node;
         } else {
             this.tail.next = node;
@@ -60,111 +63,62 @@ public class SinglyLinkedList {
         }
 
         this.size++;
-
     }
 
-    public int popLeft() throws Exception {
+    public T popLeft() throws Exception {
+
+        T popValue = null;
 
         if (this.head == null) {
-            throw new Exception("List is empty");
-        }
-        int headValue = this.head.value;
-
-        if (this.head.next == null) {
+            throw new Exception("Cannot pop from empty list");
+        } else if (this.head.next == null) {
+            popValue = this.head.value;
             this.head = null;
             this.tail = null;
-            this.size = 0;
-            return headValue;
         } else {
+            popValue = this.head.value;
             this.head = this.head.next;
         }
 
         this.size--;
 
-        return headValue;
+        return popValue;
     }
 
-    public int popRight() throws Exception {
+    public T popRight() throws Exception {
+
+        T popValue = null;
 
         if (this.head == null) {
-            throw new Exception("List is empty");
-        }
-
-        int tailValue = this.tail.value;
-
-        if (this.head.next == null) {
+            throw new Exception("Cannot pop from empty list");
+        } else if (this.head.next == null) {
+            popValue = this.tail.value;
             this.head = null;
             this.tail = null;
-            this.size = 0;
-            return tailValue;
-        }
-
-        Node current = this.head;
-
-        while (current.next != this.tail) {
-            current = current.next;
-        }
-        current.next = null;
-        this.tail = current;
-
-        this.size--;
-
-        return tailValue;
-    }
-
-    public boolean exists(int value) {
-        if (this.head == null) {
-            return false;
-        }
-
-        Node current = this.head;
-
-        while (current != null) {
-            if (current.value == value) {
-                return true;
-            }
-            current = current.next;
-        }
-
-        return false;
-    }
-
-    public void removeByValue(int value) throws Exception{
-
-        if (this.head == null) {
-            throw new Exception("List is empty");
-        }
-
-        boolean exists = this.exists(value);
-
-        if (!exists) {
-            throw new Exception(value + " does not exist");
-        }
-
-        if (this.head.value == value) {
-            this.popLeft();
-        } else if (this.tail.value == value) {
-            this.popRight();
         } else {
 
-            Node current = this.head;
+            Node<T> current = this.head;
 
-            while (current.next.value != value) {
+            while (current.next != this.tail) {
                 current = current.next;
             }
 
-            current.next = current.next.next;
-            this.size--;
+            this.tail = current;
+            this.tail.next = null;
         }
+
+        this.size--;
+
+        return popValue;
     }
 
-    public void removeByIndex(int index) throws Exception {
+    public void remove(int index) throws Exception {
 
         if (this.head == null) {
-            throw new Exception("List is empty");
+            throw new Exception("Cannot remove from empty list");
         }
 
-        if (index < 0 || index >= this.size) {
+        if (index < 0 || index > this.size-1) {
             throw new Exception("Invalid index");
         }
 
@@ -174,12 +128,36 @@ public class SinglyLinkedList {
             this.popRight();
         } else {
 
-            Node current = this.head;
-            int currentIndex = 0;
+            Node<T> current = this.head;
+            int tempIndex = 0;
 
-            while (currentIndex < index-1) {
+            while (tempIndex < index-1) {
                 current = current.next;
-                currentIndex++;
+                tempIndex++;
+            }
+
+            current.next = current.next.next;
+
+            this.size--;
+        }
+    }
+
+    public void remove(T value) throws Exception {
+
+        if (this.head == null) {
+            throw new Exception("Cannot remove from empty list");
+        }
+
+        if (this.head.value == value) {
+            this.popLeft();
+        } else if (this.tail.value == value) {
+            this.popRight();
+        } else {
+
+            Node<T> current = this.head;
+
+            while (current.next.value != value) {
+                current = current.next;
             }
 
             current.next = current.next.next;
@@ -193,6 +171,5 @@ public class SinglyLinkedList {
         this.tail = null;
         this.size = 0;
     }
+
 }
-
-
