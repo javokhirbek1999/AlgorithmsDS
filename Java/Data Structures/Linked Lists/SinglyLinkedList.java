@@ -88,12 +88,14 @@ public class SinglyLinkedList <T> {
 
     public T popRight() throws Exception {
 
-        T popValue = null;
 
         if (this.head == null) {
             throw new Exception("Cannot pop from empty list");
-        } else if (this.head.next == null) {
-            popValue = this.tail.value;
+        }
+
+        T popValue = this.tail.value;
+
+        if (this.head.next == null) {
             this.head = null;
             this.tail = null;
         } else {
