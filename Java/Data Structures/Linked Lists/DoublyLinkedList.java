@@ -1,21 +1,22 @@
+package com.believer.LinkedList;
 
-class DNode{
-    public int value;
-    public DNode prev;
-    public DNode next;
+class DNode <T> {
+    protected T value;
+    protected DNode<T> prev;
+    protected DNode<T> next;
 
-    public DNode(int value) {
+    public DNode(T value) {
         this.value = value;
         this.prev = null;
         this.next = null;
     }
 }
 
-public class DoublyLinkedList {
+public class DoublyLinkedList <T> {
 
-    public DNode head;
-    public DNode tail;
-    public int size;
+    private DNode<T> head;
+    private DNode<T> tail;
+    private int size;
 
     public DoublyLinkedList() {
         this.head = null;
@@ -24,7 +25,8 @@ public class DoublyLinkedList {
     }
 
     public void print() {
-        DNode current = this.head;
+
+        DNode<T> current = this.head;
 
         while (current != null) {
             if (current.next == null) {
@@ -36,26 +38,9 @@ public class DoublyLinkedList {
         }
     }
 
-    public boolean exists(int value) {
-        if (this.head == null) {
-            return false;
-        }
+    public void prepend(T value) {
 
-        DNode current = this.head;
-
-        while (current != null) {
-            if (current.value == value) {
-                return true;
-            }
-            current = current.next;
-        }
-
-        return false;
-    }
-
-    public void prepend(int value) {
-
-        DNode node = new DNode(value);
+        DNode<T> node = new DNode<>(value);
 
         if (this.head == null) {
             this.head = node;
@@ -69,12 +54,12 @@ public class DoublyLinkedList {
         this.size++;
     }
 
-    public void append(int value) {
+    public void append(T value) {
 
-        DNode node = new DNode(value);
+        DNode<T> node = new DNode<>(value);
 
         if (this.head == null) {
-            this.head = node;
+            this.head= node;
             this.tail = node;
         } else {
             node.prev = this.tail;
@@ -85,85 +70,54 @@ public class DoublyLinkedList {
         this.size++;
     }
 
-    public int popRight() throws Exception {
+    public T popLeft() throws Exception {
 
         if (this.head == null) {
-            throw new Exception("List is empty");
+            throw new Exception("Cannot pop from empty list");
         }
 
-        int tailValue = this.tail.value;
+        T popValue = this.head.value;
 
         if (this.head.next == null) {
             this.head = null;
             this.tail = null;
-            this.size = 0;
+        } else {
+            this.head = this.head.next;
+        }
+
+        this.size--;
+
+        return popValue;
+    }
+
+    public T popRight() throws Exception {
+
+
+        if (this.head == null) {
+            throw new Exception("Cannot pop from empty list");
+        }
+        T popValue = this.head.value;
+
+        if (this.head.next == null) {
+            this.head = null;
+            this.tail = null;
         } else {
             this.tail = this.tail.prev;
             this.tail.next = null;
-            this.size--;
         }
 
+        this.size--;
 
-        return tailValue;
-
+        return popValue;
     }
 
-    public int popLeft() throws Exception {
+    public void remove(int index) throws Exception {
 
         if (this.head == null) {
-            throw new Exception("List is empty");
+            throw new Exception("Cannot remove from empty list");
         }
 
-        int headValue = this.head.value;
-
-        if (this.head.next == null) {
-            this.head = null;
-            this.tail = null;
-            this.size = 0;
-        } else {
-            this.head = this.head.next;
-            this.head.prev = null;
-            this.size--;
-        }
-
-        return headValue;
-    }
-
-    public void removeByValue(int value) throws Exception {
-
-        if (this.head == null) {
-            throw new Exception("List is empty");
-        }
-
-        boolean exists = this.exists(value);
-
-        if (!exists) {
-            throw new Exception("Value does not exist");
-        }
-
-        if (this.head.value == value) {
-            this.popLeft();
-        } else if (this.tail.value == value) {
-            this.popRight();
-        } else {
-
-            DNode current = this.head;
-
-            while (current.next.value != value) {
-                current = current.next;
-            }
-            current.next = current.next.next;
-            this.size--;
-        }
-    }
-
-    public void removeByIndex(int index) throws Exception {
-
-        if (this.head == null) {
-            throw new Exception("List is empty");
-        }
-
-        if (index < 0 || index >= this.size) {
+        if (index < 0 || index > this.size-1) {
             throw new Exception("Invalid index");
         }
 
@@ -173,19 +127,41 @@ public class DoublyLinkedList {
             this.popRight();
         } else {
 
-            DNode current = this.head;
-            int currentIndex = 0;
+            DNode<T> current = this.head;
+            int tempIndex = 0;
 
-            while (currentIndex < index-1) {
+            while (tempIndex < index-1) {
                 current = current.next;
-                currentIndex++;
+                tempIndex++;
+            }
+            current.next = current.next.next;
+            current.next.prev = null;
+
+            this.size--;
+        }
+    }
+
+    public void remove(T value) throws Exception {
+
+        if (this.head == null) {
+            throw new Exception("Cannot remove from empty list");
+        }
+
+        if (this.head.value == value) {
+            this.popLeft();
+        } else if (this.tail.value == value) {
+            this.popRight();
+        } else {
+
+            DNode<T> current = this.head;
+
+            while (current.next.value != value) {
+                current = current.next;
             }
 
-            if (current.next == this.tail) {
-                current.next = null;
-            } else {
-                current.next = current.next.next;
-            }
+            current.next = current.next.next;
+            current.next.prev = null;
+
             this.size--;
         }
     }
