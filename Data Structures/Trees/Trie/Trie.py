@@ -1,64 +1,53 @@
 class TrieNode:
-    def __init__(self):
+
+    def __init__(self, char) -> None:
+        self.char = char
         self.children = {}
-        self.endOfString = False
+        self.count = 0
+        self.end = False
 
 class Trie:
-    def __init__(self):
-        self.root = TrieNode()
-    
-    def insertString(self,word):
-        current = self.root
-        for i in word:
-            ch = i
-            node = current.children.get(ch) 
-            if node == None: # Checks if the char is in the Trie
-                node = TrieNode()
-                current.children.update({ch:node})
-            current = node
-        current.endOfString = True # End the string after insertion
-        print("Successfully inserted")
-    
-    def search(self,word):
-        current = self.root
-        for i in word:
-            node = current.children.get(i)
-            if node == None:
-                return False
-            else:
-                current = node
-        # Eventhough it exists in the Trie, we have to make sure that it is not the prefix
-        # by checking whether the next node's endOfString property set to True
-        if current.endOfString == True:
-            return True
-        # Otherwise, it is the prefix, not the whole word
-        else:
-            return False
- 
-    def remove(self,root,word,index):
-        ch = word[index]
-        current = root.children.get(ch)
-        canBeRemoved = False
 
-        if len(current.children)>1:
-            self.remove(current,word,index+1)
-            return False
-        
-        if index == len(word)-1:
-            if len(current.children) >= 1:
-                current.endOfString = False
-                return False
+    def __init__(self) -> None:
+        self.root = TrieNode("")
+    
+    def add(self, word:str):
+
+        node = self.root
+
+        for char in word:
+
+            if char in node.children:
+                node = node.children[char]
             else:
-                root.children.pop(ch)
-                return True 
+                newNode = TrieNode(char)
+                node.children[char] = newNode
+                node = newNode
+
+        node.end = True
+        node.count += 1 
+    
+    def dfs(self, node, prefix):
+
+        if node.end:
+            self.output.append((prefix + node.char, node.count))
         
-        if current.endOfString == True:
-            self.remove(current,word,index)
-            return False
+        for child in node.children.values():
+            self.dfs(child, prefix + node.char)
+
+    def query(self, word:str):
+
+        self.output = []
+        node = self.root
+
+        for char in word:
+
+            if char in node.children:
+                node = node.children[char]
+            else:
+                return []
         
-        canBeRemoved = self.remove(current,word,index+1)
-        if canBeRemoved == True:
-            root.children.pop(ch)
-            return True
-        else:
-            return False
+        self.dfs(node, word[:-1])
+
+
+        return sorted(self.output, key=lambda x:x[1], reverse=True)
