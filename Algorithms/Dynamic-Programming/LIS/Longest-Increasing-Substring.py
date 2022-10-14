@@ -3,7 +3,7 @@ Time: O(n^2)
 Space: O(n)
 """
 
-def lengthOfLIS(self, nums: List[int]) -> int:
+def lengthOfLIS(nums: List[int]) -> int:
         
         res = []
         
