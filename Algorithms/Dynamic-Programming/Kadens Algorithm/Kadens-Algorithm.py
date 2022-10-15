@@ -3,7 +3,7 @@ Time: O(n)
 Space: O(1)
 """
 
-def maxSubArray(self, nums: List[int]) -> int:
+def maxSubArray(nums: List[int]) -> int:
 
     if len(nums) == 1:
         return nums[0]
