@@ -1,3 +1,7 @@
+"""
+Time: O(n)
+Space: O(1)
+"""
 # Iterative
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
@@ -18,6 +22,10 @@ class Solution:
         return prev
       
 
+"""
+Time: O(n)
+Space: O(n)
+"""
 # Recursive
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
