@@ -1,5 +1,5 @@
 """
-Time: O(n^2)
+Time: O(n^3)
 Space: O(n)
 """
 class Solution:
