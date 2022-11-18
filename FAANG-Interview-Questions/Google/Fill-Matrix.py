@@ -1,6 +1,8 @@
 """
 Time: O(n^3*m)
 Space: O(n^2)
+
+Variation: N-Queens
 """
 
 from typing import List
